@@ -1,1 +1,1 @@
-web: gunicorn music-api:app
+web: gunicorn musicApi:app
