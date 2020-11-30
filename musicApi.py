@@ -1,12 +1,12 @@
 from flask import Flask, request
 
-api = Flask(__name__)
+app = Flask(__name__)
 
-@api.route('/')
+@app.route('/')
 def index():
     return 'music api is working'
 
-@api.route('/music')
+@app.route('/music')
 def music():
     file = request.args.get('file')
     try:
@@ -17,4 +17,4 @@ def music():
     return { 'result': 'true', 'file': newFile }
  
 if __name__ == '__main__':
-    api.run()
+    app.run()ç
