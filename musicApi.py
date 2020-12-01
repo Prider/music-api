@@ -12,11 +12,11 @@ def music():
     file = request.args.get('file')
     try:
         newFile = int(file)
-        data = { 'result': 'true', 'file': newFile }
+        return json_response(success=True, file=newFile)
     except:
-        data = { 'error': 'true', 'message': 'invalid file'}
 
-    return json_response(data=data)
+        return json_response(error=True, messsage='invalid file')
+
  
 if __name__ == '__main__':
     app.run()
