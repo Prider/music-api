@@ -8,7 +8,7 @@ FlaskJSON(app)
 @app.route('/')
 def index():
     now = datetime.utcnow()
-    return json_response(time=now)
+    return json_response(time=now, description='music api is working')
 
 @app.route('/music', methods=['POST','GET'])
 def music():
