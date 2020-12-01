@@ -16,7 +16,7 @@ def music():
     except:
         data = { 'error': 'true', 'message': 'invalid file'}
 
-    return json_response(data)
+    return json_response(data=data)
  
 if __name__ == '__main__':
     app.run()
