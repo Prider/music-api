@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_json import json_response
 
 app = Flask(__name__)
 
@@ -6,15 +7,16 @@ app = Flask(__name__)
 def index():
     return 'music api is working'
 
-@app.route('/music')
+@app.route('/music', methods=['POST','GET'])
 def music():
     file = request.args.get('file')
     try:
         newFile = int(file)
+        data = { 'result': 'true', 'file': newFile }
     except:
-        return { 'error': 'true', 'message': 'invalid file'}
+        data = { 'error': 'true', 'message': 'invalid file'}
 
-    return { 'result': 'true', 'file': newFile }
+    return json_response(data)
  
 if __name__ == '__main__':
     app.run()
