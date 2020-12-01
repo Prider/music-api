@@ -14,7 +14,6 @@ def music():
         newFile = int(file)
         return json_response(success=True, file=newFile)
     except:
-
         return json_response(error=True, messsage='invalid file')
 
  
