@@ -15,6 +15,23 @@ ALLOWED_EXTENSIONS = set(['mpg', 'mpeg', 'mp4', 'mp3'])
 UPLOAD_FOLDER = './uploads'
 ALLOWED_SIZE = 10*1024*1024
 
+def allowed_file(filename):
+    if '.' in filename and filename.split('.', 1)[1] in ALLOWED_EXTENSIONS:
+        return True
+    return False
+
+def allowed_size(file):
+    if file.size < ALLOWED_SIZE:
+        return True
+    return False
+
+app = Flask(__name__)
+app.debug = True
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+happyModel = load_model('happy_birth_day_model.h5')
+FlaskJSON(app)
+
+
 def featureExtract(row, y, sr):
   rmse = librosa.feature.rms(y=y)
   spec_cent = librosa.feature.spectral_centroid(y=y, sr=sr)
@@ -54,25 +71,8 @@ def predictAudio(filePath):
     scaler = StandardScaler()
     scaled_x = scaler.fit_transform(x)
     scaled_x = scaled_x.astype('float32')
-    happyModel = load_model('happy_birth_day_model.h5')
     result = happyModel.predict_classes(scaled_x)
     return result
-
-
-def allowed_file(filename):
-    if '.' in filename and filename.split('.', 1)[1] in ALLOWED_EXTENSIONS:
-        return True
-    return False
-
-def allowed_size(file):
-    if file.size < ALLOWED_SIZE:
-        return True
-    return False
-
-app = Flask(__name__)
-app.debug = True
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-FlaskJSON(app)
 
 @app.route('/')
 def index():
