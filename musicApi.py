@@ -49,17 +49,13 @@ def predictAudio(filePath):
     row = {}
     row = featureExtract(row, y, sr)
     row = featureExtractMfcc(row, y, sr)
-    print('row :',row)
     x = pd.DataFrame()
     x = x.append(row, ignore_index=True)
-    print('music :',x)
     scaler = StandardScaler()
     scaled_x = scaler.fit_transform(x)
     scaled_x = scaled_x.astype('float32')
-    print('scaled_x :', scaled_x)
     happyModel = load_model('happy_birth_day_model.h5')
     result = happyModel.predict_classes(scaled_x)
-    print('???result :', result)
     return result
 
 
