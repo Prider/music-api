@@ -2,5 +2,17 @@ flask==1.0.2
 jinja2==2.10
 werkzeug==0.14.1
 gunicorn==19.9.0
-numpy ==1.14.5
+numpy==1.18.5
 Flask-JSON==0.3.4
+librosa
+Keras==2.4.3
+Keras-Preprocessing==1.1.2
+tensorflow==2.3.0
+tensorflow-estimator==2.3.0
+tensorflow-hub==0.9.0
+scipy==1.4.1
+h5py==2.10.0
+requests==2.21.0
+kora==0.9.13
+google-colab==1.0.0
+matplotlib==3.3.3
