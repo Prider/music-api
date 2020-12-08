@@ -21,6 +21,6 @@ SoundFile==0.10.3.post1
 tensorboard==2.4.0
 tensorflow==2.3.0
 tensorflow-estimator==2.3.0
-tensorflow-hub==0.9.0
 testpath==0.4.4
 Werkzeug==0.14.1
+h5py==2.10.0
