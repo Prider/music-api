@@ -103,8 +103,8 @@ def music():
         else:
             filename = secure_filename(file.filename)
             print('filename', filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'],'audio.mp3'))
-            filePath = 'uploads/audio.mp3';
+            file.save('audio.mp3')
+            filePath = 'audio.mp3';
             result = predictAudio(filePath)
             original = 'not original'
             if ( result and result[0] == 1):
