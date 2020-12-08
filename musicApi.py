@@ -26,6 +26,7 @@ def allowed_size(file):
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.debug = True
 happyModel = load_model('happy_birth_day_model.h5')
 FlaskJSON(app)
 
