@@ -10,7 +10,7 @@ from tensorflow.keras.models import load_model
 from sklearn.preprocessing import StandardScaler
 import librosa
 
-ALLOWED_EXTENSIONS = set(['wav'])
+ALLOWED_EXTENSIONS = set(['mp3'])
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_SIZE = 20*1024*1024
 
@@ -104,8 +104,8 @@ def music():
         else:
             filename = secure_filename(file.filename)
             print('filename', filename)
-            file.save('audio.wav')
-            filePath = 'audio.wav';
+            file.save('audio.mp3')
+            filePath = 'audio.mp3';
             result = predictAudio(filePath)
             original = 'not original'
             if ( result and result[0] == 1):
