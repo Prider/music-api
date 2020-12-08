@@ -9,6 +9,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from sklearn.preprocessing import StandardScaler
 import librosa
+from pathlib import Path
 
 ALLOWED_EXTENSIONS = set(['mp3'])
 UPLOAD_FOLDER = 'uploads'
@@ -59,7 +60,7 @@ def featureExtractMfcc(row, y, sr):
     return row
 
 def predictAudio(filePath):
-    y, sr  = librosa.load(filePath, mono=True, offset=5.0, duration=20.0) 
+    y, sr  = librosa.load(str(Path(filePath)), mono=True, offset=5.0, duration=20.0) 
 
     row = {}
     row = featureExtract(row, y, sr)
