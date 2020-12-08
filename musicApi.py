@@ -10,7 +10,7 @@ from tensorflow.keras.models import load_model
 from sklearn.preprocessing import StandardScaler
 import librosa
 
-ALLOWED_EXTENSIONS = set(['mpg', 'mpeg', 'mp4', 'mp3'])
+ALLOWED_EXTENSIONS = set(['mp3'])
 UPLOAD_FOLDER = './uploads'
 ALLOWED_SIZE = 10*1024*1024
 
@@ -25,7 +25,6 @@ def allowed_size(file):
     return False
 
 app = Flask(__name__)
-app.debug = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 happyModel = load_model('happy_birth_day_model.h5')
 FlaskJSON(app)
@@ -104,8 +103,8 @@ def music():
         else:
             filename = secure_filename(file.filename)
             print('filename', filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
-            filePath = './uploads/{}'.format(file.filename);
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],'audio.mp4'))
+            filePath = './uploads/audio.mp4';
             result = predictAudio(filePath)
             original = 'not original'
             if ( result and result[0] == 1):
