@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 import librosa
 
 ALLOWED_EXTENSIONS = set(['mp3'])
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = 'uploads'
 ALLOWED_SIZE = 10*1024*1024
 
 def allowed_file(filename):
@@ -103,8 +103,8 @@ def music():
         else:
             filename = secure_filename(file.filename)
             print('filename', filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'],'audio.mp4'))
-            filePath = './uploads/audio.mp4';
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],'audio.mp3'))
+            filePath = 'uploads/audio.mp3';
             result = predictAudio(filePath)
             original = 'not original'
             if ( result and result[0] == 1):
