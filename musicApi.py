@@ -4,12 +4,11 @@ from flask_json import FlaskJSON, JsonError, json_response, as_json
 
 from werkzeug.utils import secure_filename
 import os
-
-import librosa
 import pandas as pd
 import numpy as np
 from tensorflow.keras.models import load_model
 from sklearn.preprocessing import StandardScaler
+import librosa
 
 ALLOWED_EXTENSIONS = set(['mpg', 'mpeg', 'mp4', 'mp3'])
 UPLOAD_FOLDER = './uploads'
